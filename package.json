@@ -1,0 +1,23 @@
+{
+  "name": "blog-demo",
+  "version": "1.0.0",
+  "description": "博客",
+  "main": "md5.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zhangzhenguo3352/blog-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zhangzhenguo3352/blog-demo/issues"
+  },
+  "homepage": "https://github.com/Zhangzhenguo3352/blog-demo#readme",
+  "dependencies": {
+    "md5": "^2.2.1"
+  }
+}

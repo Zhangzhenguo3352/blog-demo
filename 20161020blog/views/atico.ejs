@@ -1,0 +1,26 @@
+<%- include component/header.ejs%>
+
+
+<form action="/atico" method="post" class="container-fluid">
+   
+   <div class="panel panel-primary" id="logo">
+       <!-- panel-heading 头部-->
+       <div class="panel-heading"><%= title%></div>
+       <!-- panel-body 内容部分-->
+       <div class="panel-body">
+           <!-- form-group 让他们成为一个整体-->
+           <!-- 添加 label 是标准设置 -->
+           <!-- form-control 控制input 修饰-->
+           <div class="form-group">
+               <label>标题：</label><input type="text" class="form-control" name="title"/>
+              <label>内  容：</label><textarea rows="10" type="text" class="form-control" name="textarea_value"/>
+           </textarea>
+           <!-- btn 修饰按钮，说明，bootstrap 会去修饰-->
+           <input type="submit" value="确定" class="btn btn-success pull-right"/>
+           <!-- text-info  文本颜色-->
+           </div>
+   </div>
+</form>
+
+
+<%- include component/footer.ejs%>

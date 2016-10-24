@@ -1,0 +1,31 @@
+
+<%- include component/header.ejs%>
+	
+
+<form action="/login" method="post" class="container-fluid">
+    <!-- panel 主题声明-->
+    <!-- panel-primary 主要的配置-->
+   <div class="panel panel-primary" id="logo">
+       <!-- panel-heading 头部-->
+       <div class="panel-heading"><%= title%></div>
+       <!-- panel-body 内容部分-->
+       <div class="panel-body">
+           <!-- form-group 让他们成为一个整体-->
+           <!-- 添加 label 是标准设置 -->
+           <!-- form-control 控制input 修饰-->
+           <div class="form-group">
+               <label>用户名：</label><input type="text" class="form-control" name="username"/>
+               <!-- alert 警告框-->
+               <div class="alert alert-warning">用户名不能为空</div>
+               <label>密  码：</label><input type="text" class="form-control" name="password"/>
+           </div>
+           <!-- btn 修饰按钮，说明，bootstrap 会去修饰-->
+           <input type="submit" value="确定" class="btn btn-success pull-right"/>
+           <!-- text-info  文本颜色-->
+           <a href="javascript:;" class="text-info">忘记密码？</a>
+       </div>
+   </div>
+</form>
+
+
+<%- include component/footer.ejs%>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+  	<nav class="navbar navbar-fixed-top navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <!-- 只有移动设备上 才能看见 右上角的按钮-->
+            <!-- 1，因为是和 logo在一起的同时显示，和 隐藏， 所以写在了这里-->
+            <!-- 2，父级必须写 navbar-toggle 导航条 切换-->
+            <!-- 3，子级要写图标横线 icon-bar 一个代表一条线-->
+            <!-- 4， data-toggle="collapse" 添加JS 交互-->
+            <!-- 5， data-target="#myCollapse" 添加关联的 展开项目 #名字-->
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#myCollapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a href="#" class="navbar-brand">logo</a>
+        </div>
+        <!-- 6，collapse navbar-collase 折叠，导航折叠-->
+        <!-- 7，id="myCollapse"  是上面要关联的 值-->
+        <div id="myCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <%
+                    if(user){
+                        %>
+                        <li><a href="/atico">发表文章</a></li>
+                        <li><a href="/signOut">用户退出</a></li>
+                        <%
+                    }else{
+                        %>
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/login">登录</a></li>
+                        <li><a href="/user_req">注册</a></li>
+                        <%
+                    }
+                %>
+                
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+<%
+    if(success){
+        %>
+        <div class="alert alert-success" role="alert">
+          <a href="#" class="alert-link"><%= success%></a>
+        </div>
+        <%
+    }
+%>
+
+<%
+    if(error){
+        %>
+        <div class="alert alert-danger" role="alert">
+          <a href="#" class="alert-link"><%= error%></a>
+        </div>
+        <%
+    }
+%>
+
+
+
+
+
+
+
+
+

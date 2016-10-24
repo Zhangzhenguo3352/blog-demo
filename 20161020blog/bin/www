@@ -1,0 +1,92 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+// 它是 日志记录器，用于控制台输出日志
+var debug = require('debug')('20161020blog:server');
+var http = require('http');
+
+/**
+ *  从环境变量中获取端口号并保持得到 express 中
+  process.env.PORT  =》从环境变量中读取这个环境变量
+ 
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);  // 如果监听失败，干个什么事情，找 onError
+server.on('listening', onListening); // 监听成功时干什么事情
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+// onError 错误干的事情，  错误的回调
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    // MAC 见得比较多，没有权限的意思，如linux 用户不能使用 1000以下的端口，因为这些端口是保留给系统用的
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      // 退出进程，1代表 错误退出，0代表 正常退出
+      process.exit(1);
+      break;
+      //Error Address in use 端口被占用
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+// 监听成功的回调
+function onListening() {
+  // 先获取到 绑定的地址
+  var addr = server.address();
+  // 让它输出 debug
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
