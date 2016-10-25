@@ -1,6 +1,26 @@
 
 <%- include component/header.ejs%>
 
-<h2>欢迎来到 张振国的博客</h2>
+
+
+<%
+	atico.forEach(function(obj){
+		%>
+			<div class="media">
+			  <a class="media-left" href="#">
+			    <img src="<%= obj.user%>" alt="...">
+			  </a>
+			  <div class="media-body">
+			    <h4 class="media-heading"><%= obj.title%></h4>
+			    <%= obj.centent%>
+			  </div>
+			</div>
+			<div class="media-bottom">
+				作者：<%= obj.user?obj.user.username:'用户没有名字！'%>，
+				发表时间：<%= obj.createAt.toLocaleString()%>
+			</div>
+		<%
+	})
+%>
 
 <%- include component/footer.ejs%>

@@ -15,12 +15,13 @@ exports.User = db.model('user',new mongoose.Schema({
 	avatar:String
 }))
 
-// 显示文章列表数据库
+// 显示文章列表数据库，这个库是 20161020blog  的  aticos  
 exports.Atico = db.model('atico',new mongoose.Schema({
-	User:{type:mongoose.Types.ObjectID,ref:'users'}, // 用户的类型一定是 合法的 用户ID，ref:user2 它的值一定是一个合法的user2 
-	title:String,
-	content:String,
-	createAt:{type:Date,default:Date.now()} 
+	user:{type:mongoose.Schema.Types.ObjectId,ref:'user'}, // 用户的类型一定是 合法的 用户ID，ref:user2 它的值一定是一个合法的user2 
+	title:String,   // 发表留言的 标题
+	centent:String,  // 发表留言 的内容
+	poster:String, // 上传图片
+	createAt:{type:Date,default:Date.now()} //发表留言的 时间
 }))
 
 
